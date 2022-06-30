@@ -1,0 +1,48 @@
+program -> BEGIN NEWLINE inicialization NEWLINE command END
+
+
+	inicialization -> ID EQ typ NEWLINE inicialization 
+	initialization -> eps
+
+		typ -> voltagesourceinicialization
+		typ -> voltageprobeinicialization
+		typ -> currentsourceinicialization
+		typ -> currentprobeinicialization
+		typ -> resistorinicialization
+		typ -> capacitorinicialization
+		typ -> inductorinicialization
+		typ -> diodeinicialization
+
+		voltagesourceinicialization ->voltagesource ( number )
+	    	voltagesourceinicialization -> voltagesource ( )
+
+	    	voltageprobeinicialization -> voltageprobe ( )
+
+	    	currentsourceinicialization -> currentsource ( number )
+	    	currentsourceinicialization -> currentsource ( )
+
+	    	currentprobeinicialization -> currentprobe ( )
+
+	    	resistorinicialization -> resistor ( number )
+
+	    	capacitorinicialization -> capacitor ( number )
+
+	    	inductorinicialization -> inductor ( number )
+
+	    	diodeinicialization -> diode ( parameters )
+			
+                number -> INT
+                number -> FLOAT
+                number -> SCIENCE
+
+                parameters -> ID EQ number nextpar
+                parameters -> NEWLINE
+                parameters -> eps
+                    nextpar -> COMA ID EQ number nextpar
+                    nextpar -> eps
+	comand -> ID [ INT ] connect comand
+	comand -> GND connect comand
+	comand -> eps
+		connect -> -- ID [ INT ] connect
+		connect -> -- GND connect
+		connect -> NEWLINE
